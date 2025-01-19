@@ -4,6 +4,7 @@
 # versions of the weather data.
 
 # Data are taken from the Met Office's Historic station data page.
+# https://www.metoffice.gov.uk/research/climate/maps-and-data/historic-station-data
 
 # Change to script directory
 cd "$(dirname "$0")";
