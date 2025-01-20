@@ -9,3 +9,18 @@ Making VS Code more like Spyder.
 + Open Python file
 + At top right, press "Run Current File in Interactive Window".
 + Interactive window has Jupyter Variables button
+
+For more IPython-like behaviour, I also needed to go to:
+
++ Preferences: Open User Settings
++ Search for "Jupyter execute selection"
++ Select the checkbox on "Jupyter > Interactive Window > Text Editor: Execute Selection".  This added `"jupyter.interactiveWindow.textEditor.executeSelection": true` to the settings.json.
+
+
+### Linting
+
+```python
+flake8 test.py
+pylint test.py
+mypy test.py  # Needs mypy --install-types to help
+```

@@ -2,15 +2,11 @@ from io import StringIO
 import os
 import pandas as pd
 
-
-max_temps_file = open('max_temps.csv', 'wt')
-max_temps_file.write("location,max_temp\n")
-
-for filename in os.listdir('data'):
+def ProcessFile(filename):
     print(filename)
     if not filename.endswith('.txt'):
         # Ignore non-data files
-        continue
+        return
 
     # Define column names and missing value indicators
     column_names = ['year', 'month', 'tmax', 'tmin', 'frost_days', 'rain_mm', 'sun']
@@ -42,5 +38,11 @@ for filename in os.listdir('data'):
         df[column] = pd.to_numeric(df[column], errors='coerce')
     
     max_temps_file.write(f"{filename.replace("data.txt", "")},{df['tmax'].mean()}\n")
+
+max_temps_file = open('max_temps.csv', 'wt')
+max_temps_file.write("location,max_temp\n")
+
+for filename in os.listdir('data'):
+    ProcessFile(filename)
 
 max_temps_file.close()
