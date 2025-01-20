@@ -16,6 +16,7 @@ For more IPython-like behaviour, I also needed to go to:
 + Search for "Jupyter execute selection"
 + Select the checkbox on "Jupyter > Interactive Window > Text Editor: Execute Selection".  This added `"jupyter.interactiveWindow.textEditor.executeSelection": true` to the settings.json.
 
+The "Rainbow CSV" extension is also useful.
 
 ### Linting
 
