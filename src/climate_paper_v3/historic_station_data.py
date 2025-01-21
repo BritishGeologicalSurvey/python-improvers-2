@@ -47,7 +47,6 @@ class MetOfficeHistoricStationData:
     def __repr__(self) -> str:
         return f"MetOfficeHistoricStationData for {self.station_name}"
 
-
 # These functions do not depend on the internal data of the class.
 # They can be defined as module-level functions or as static methods on the
 # class.
@@ -105,20 +104,3 @@ def _preprocess_metoffice_file(data_file: Path) -> StringIO:
         ]
 
     return StringIO("".join(clean_lines))
-
-
-
-
-def write_max_temps_csv_file(
-    mean_max_temp_data: list[dict[str, float]], csv_file: Path
-):
-    """
-    Use Python's inbuilt `csv` library to write data to csv file.
-    """
-    field_names = ["location", "max_temp"]
-
-    # newline must be specified to stop Windows adding extra linebreaks
-    with open(csv_file, "wt", newline='') as output_file:
-        writer = csv.DictWriter(output_file, fieldnames=field_names)
-        writer.writeheader()
-        writer.writerows(mean_max_temp_data)
