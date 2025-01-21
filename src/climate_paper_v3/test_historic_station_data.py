@@ -4,7 +4,7 @@ Tests for historic station data classes.
 from pathlib import Path
 from textwrap import dedent
 
-from historic_station_data import get_station_name, MetOfficeHistoricStationData
+from historic_station_data import MetOfficeHistoricStationData
 
 
 def test_get_station_name():
@@ -13,7 +13,7 @@ def test_get_station_name():
     expected = "teststation"
 
     # Act
-    result = get_station_name(station_file)
+    result = MetOfficeHistoricStationData.get_station_name(station_file)
 
     # Assert
     assert result == expected

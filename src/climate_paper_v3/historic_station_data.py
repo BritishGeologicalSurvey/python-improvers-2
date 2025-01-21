@@ -21,7 +21,7 @@ class MetOfficeHistoricStationData:
         logger.info("Processing %s", data_file.name)
         self._data_file = data_file
         self.station_data = read_metoffice_file(data_file)
-        self.station_name = get_station_name(data_file)
+        self.station_name = self.get_station_name(data_file)
 
     def mean_maximum_temperature(self) -> float:
         mean_max_temp = self.station_data['tmax'].mean()
@@ -47,9 +47,15 @@ class MetOfficeHistoricStationData:
     def __repr__(self) -> str:
         return f"MetOfficeHistoricStationData for {self.station_name}"
 
-# These functions do not depend on the internal data of the class.
-# They can be defined as module-level functions or as static methods on the
-# class.
+    @staticmethod
+    def get_station_name(data_file: Path) -> str:
+        return data_file.name.replace("data.txt", "")
+
+
+# This function does not depend on the internal data of the class, however
+# it is not defined as a staticmethod because it calls the child
+# _preprocess_metoffice_file.  If that function belonged to the class, this
+# one would need access to `self` to be able to call it.
 def read_metoffice_file(data_file: Path) -> pd.DataFrame:
     """
     Read Met Office Historic Station data file into Pandas dataframe.
@@ -84,10 +90,6 @@ def read_metoffice_file(data_file: Path) -> pd.DataFrame:
     logger.debug("%s rows loaded", len(df))
 
     return df
-
-
-def get_station_name(data_file: Path) -> str:
-    return data_file.name.replace("data.txt", "")
 
 
 def _preprocess_metoffice_file(data_file: Path) -> StringIO:
