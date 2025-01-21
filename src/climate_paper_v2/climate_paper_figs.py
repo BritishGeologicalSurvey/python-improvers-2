@@ -34,7 +34,8 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
         except Exception:
             logger.exception("Failed to read %s", data_file)
             continue
-        station_name = data_file.name.replace("data.txt", "")
+
+        station_name = get_station_name(data_file)
 
         max_mean_temp = calculate_mean_maximum_temperature(station_data)
         mean_max_temps.append({"location": station_name, "max_temp": max_mean_temp})
@@ -83,6 +84,10 @@ def read_metoffice_file(data_file: Path) -> pd.DataFrame:
     logger.debug("%s rows loaded", len(df))
 
     return df
+
+
+def get_station_name(data_file: Path) -> str:
+    return data_file.name.replace("data.txt", "")
 
 
 def calculate_mean_maximum_temperature(station_data: pd.DataFrame) -> float:
