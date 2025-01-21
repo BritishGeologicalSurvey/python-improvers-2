@@ -4,6 +4,7 @@
 
 + What do you use Python for? (3 things)
 + What are the main libraries that you use e.g. Pandas?
++ Do you use virtual environments (conda, pip)?
 + Do you use code from elsewhere e.g. collaborators?
 + Do you share your code outside BGS?
 
