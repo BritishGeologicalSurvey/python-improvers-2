@@ -3,6 +3,11 @@ import matplotlib.pyplot as plt
 import os
 work_Dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'work')
 
+try:
+    os.mkdir(work_Dir)
+except FileExistsError:
+    pass
+
 import csv
 
 def ProcessFile(filename):
@@ -18,7 +23,9 @@ def ProcessFile(filename):
     # Create pseudo-file that has removed the Site closed lines from
     # any files that have it e.g. cwmystwythdata.txt.
     clean = []
-    with open('data/' + filename, 'r') as file:
+    root_dir = os.path.dirname(os.path.dirname(os.getcwd()))
+    full_filename = os.path.join(root_dir, 'data', filename)
+    with open(full_filename, 'r') as file:
         for lines in file:
             if 'site closed' not in lines.casefold():  # Skip lines containing 'Site closed'
                 clean += [lines]
@@ -54,3 +61,5 @@ f .write("location,max_temp\n")
 
 for filename in os.listdir(os.path.join(os.path.dirname(work_Dir), 'data')):
     ProcessFile(filename)
+
+f.close()
