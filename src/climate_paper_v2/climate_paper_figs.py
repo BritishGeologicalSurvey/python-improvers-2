@@ -7,7 +7,6 @@ import csv
 from io import StringIO
 import logging
 from pathlib import Path
-import warnings
 
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
@@ -16,6 +15,9 @@ import pandas as pd
 logger = logging.getLogger("climate_paper")
 WORK_DIR = Path(__file__).parent.parent.parent / "work"
 DATA_DIR = Path(__file__).parent.parent.parent / "data"
+
+# This message is used to demonstrate that code is run when module is imported.
+print(f"Hello from {__file__} body!")
 
 
 def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
@@ -61,7 +63,7 @@ def read_metoffice_file(data_file: Path) -> pd.DataFrame:
     # and the "provisional" data from the end of the file.
     df = pd.read_csv(
         clean_pseudo_file,
-        sep="\s+",
+        sep=r"\s+",
         skiprows=8,
         names=column_names,
         na_values=missing_values,
@@ -143,9 +145,13 @@ def _preprocess_metoffice_file(data_file: Path) -> StringIO:
 
 
 if __name__ == "__main__":
+    # This message is not displayed when module is imported.
+    print(f"{__file__} is being run as a script!")
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(levelname)s: %(message)s",
     )
+
     WORK_DIR.mkdir(exist_ok=True)
     plot_climate_paper_figs_and_csv(DATA_DIR, WORK_DIR)

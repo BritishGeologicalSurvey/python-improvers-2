@@ -36,7 +36,7 @@ def ProcessFile(filename):
     # Read the cleaned lines, skipping the first lines of metadata
     # and the "provisional" data from the end of the file.
     import pandas as pd
-    df = pd.read_csv(cleaned_pseudo_file, sep='\s+', skiprows=8, names=columnNames, na_values=mvs, on_bad_lines='skip')
+    df = pd.read_csv(cleaned_pseudo_file, sep=r'\s+', skiprows=8, names=columnNames, na_values=mvs, on_bad_lines='skip')
     print(len(df))
 
     # Create an index with the dates
