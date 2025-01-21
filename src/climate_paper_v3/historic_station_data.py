@@ -66,7 +66,7 @@ def read_metoffice_file(data_file: Path) -> pd.DataFrame:
     df = pd.read_csv(
         clean_pseudo_file,
         sep=r"\s+",
-        skiprows=8,
+        skiprows=7,
         names=column_names,
         na_values=missing_values,
         on_bad_lines="skip",
