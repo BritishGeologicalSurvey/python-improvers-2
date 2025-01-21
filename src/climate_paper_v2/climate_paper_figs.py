@@ -13,7 +13,6 @@ from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 import pandas as pd
 
-warnings.simplefilter("ignore")  # Ignore pandas warnings about bad lines
 logger = logging.getLogger("climate_paper")
 WORK_DIR = Path(__file__).parent.parent.parent / "work"
 DATA_DIR = Path(__file__).parent.parent.parent / "data"
@@ -35,7 +34,6 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
         except Exception:
             logger.exception("Failed to read %s", data_file)
             continue
-
         station_name = data_file.name.replace("data.txt", "")
 
         max_mean_temp = calculate_mean_maximum_temperature(station_data)
@@ -69,7 +67,7 @@ def read_metoffice_file(data_file: Path) -> pd.DataFrame:
         skiprows=8,
         names=column_names,
         na_values=missing_values,
-        on_bad_lines="warn",
+        on_bad_lines="skip",
     )
 
     # Create an index with the dates
