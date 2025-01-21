@@ -45,7 +45,6 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
         plot_max_temp_png(station_data, station_name)
         
     csv_file = WORK_DIR / "max_temps.csv"
-    logger.info("Writing CSV data to %s", csv_file)
     write_max_temps_csv_file(mean_max_temps, csv_file)
 
 
@@ -119,6 +118,7 @@ def write_max_temps_csv_file(
     """
     Use Python's inbuilt `csv` library to write data to csv file.
     """
+    logger.info("Writing CSV data to %s", csv_file)
     field_names = ["location", "max_temp"]
 
     # newline must be specified to stop Windows adding extra linebreaks
@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
     logging.basicConfig(
         level=logging.INFO,
-        format="%(levelname)s: %(message)s",
+        format="%(name)s - %(levelname)s: %(message)s",
     )
 
     WORK_DIR.mkdir(exist_ok=True)
