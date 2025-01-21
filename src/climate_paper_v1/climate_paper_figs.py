@@ -1,12 +1,16 @@
 from io import StringIO
 import matplotlib.pyplot as plt
 import os
+data_Dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'data')
 work_Dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'work')
 
 try:
     os.mkdir(work_Dir)
 except FileExistsError:
     pass
+
+if not os.path.exists(data_Dir):
+    os.mkdir(data_Dir)
 
 import csv
 
@@ -23,9 +27,7 @@ def ProcessFile(filename):
     # Create pseudo-file that has removed the Site closed lines from
     # any files that have it e.g. cwmystwythdata.txt.
     clean = []
-    root_dir = os.path.dirname(os.path.dirname(os.getcwd()))
-    full_filename = os.path.join(root_dir, 'data', filename)
-    with open(full_filename, 'r') as file:
+    with open(os.path.join(data_Dir, filename), 'r') as file:
         for lines in file:
             if 'site closed' not in lines.casefold():  # Skip lines containing 'Site closed'
                 clean += [lines]
