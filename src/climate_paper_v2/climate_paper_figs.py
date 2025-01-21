@@ -24,7 +24,7 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
     a .csv file of mean maximum temperatures.  Output files are stored in
     work_dir.
     """
-    mean_max_temps = []
+    mean_max_temps = []  # store for mean max temp data
 
     for data_file in data_dir.glob("*data.txt"):
         logger.info("Processing %s", data_file.name)
@@ -40,11 +40,8 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
         max_mean_temp = calculate_mean_maximum_temperature(station_data)
         mean_max_temps.append({"location": station_name, "max_temp": max_mean_temp})
 
-        fig = plot_max_temp_figure(station_data, station_name)
-        fig.savefig(f"{WORK_DIR / station_name}.png", dpi=150)
-        plt.close(fig)
+        plot_max_temp_png(station_data, station_name)
         
-
     csv_file = WORK_DIR / "max_temps.csv"
     logger.info("Writing CSV data to %s", csv_file)
     write_max_temps_csv_file(mean_max_temps, csv_file)
@@ -94,6 +91,15 @@ def calculate_mean_maximum_temperature(station_data: pd.DataFrame) -> float:
     mean_max_temp = station_data['tmax'].mean()
     logger.debug("Mean maximum temperature: %s", mean_max_temp)
     return mean_max_temp
+
+
+def plot_max_temp_png(station_data: pd.DataFrame, station_name: str, work_dir: Path = WORK_DIR):
+    """
+    Generate a .png file in the working directory with a plot of max temp.
+    """
+    fig = plot_max_temp_figure(station_data, station_name)
+    fig.savefig(f"{work_dir / station_name}.png", dpi=150)
+    plt.close(fig)
 
 
 def plot_max_temp_figure(station_data: pd.DataFrame, station_name: str) -> Figure:
