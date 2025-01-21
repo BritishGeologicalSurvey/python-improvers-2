@@ -7,6 +7,24 @@
 + Do you use virtual environments (conda, pip)?
 + Do you use code from elsewhere e.g. collaborators?
 + Do you share your code outside BGS?
++ Do you write tests for your code?
+
+#### Python features
+
+Which of the following Python features do you use?
+
++ [ ] list comprehensions
++ [ ] loggers
++ [ ] functions
++ [ ] classes
++ [ ] modules
++ [ ] packages
++ [ ] argument parsers (for command line tools)
++ [ ] debuggers
++ [ ] decorators
++ [ ] generators
++ [ ] threads
++ [ ] multiprocessing
 
 ### Tools
 
