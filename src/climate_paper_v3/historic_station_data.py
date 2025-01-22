@@ -49,7 +49,7 @@ class MetOfficeHistoricStationData:
 
     @staticmethod
     def get_station_name(data_file: Path) -> str:
-        return data_file.name.replace("data.txt", "")
+        return data_file.name.replace("data.txt", "not this")
 
 
 # This function does not depend on the internal data of the class, however
