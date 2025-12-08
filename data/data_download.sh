@@ -6,6 +6,10 @@
 # Data are taken from the Met Office's Historic station data page.
 # https://www.metoffice.gov.uk/research/climate/maps-and-data/historic-station-data
 
+# Note that some files then require manual alteration of the header to ensure
+# that the read data start on line 8.  This involves concatenating location data
+# where it is spread across multiple rows.  `braemardata.txt` is an example.
+
 # Change to script directory
 cd "$(dirname "$0")";
 
