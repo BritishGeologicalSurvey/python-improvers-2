@@ -43,7 +43,7 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
         max_mean_temp = calculate_mean_maximum_temperature(station_data)
         mean_max_temps.append({"location": station_name, "max_temp": max_mean_temp})
 
-    csv_file = RESULTS_DIR / "max_temps.csv"
+    csv_file = work_dir / "max_temps.csv"
     write_max_temps_csv_file(mean_max_temps, csv_file)
 
 
@@ -127,7 +127,7 @@ def write_max_temps_csv_file(
     field_names = ["location", "max_temp"]
 
     # newline must be specified to stop Windows adding extra linebreaks
-    with open(csv_file, "wt", newline='') as output_file:
+    with open(csv_file, "wt", newline='', encoding="utf-8") as output_file:
         writer = csv.DictWriter(output_file, fieldnames=field_names)
         writer.writeheader()
         writer.writerows(mean_max_temp_data)
