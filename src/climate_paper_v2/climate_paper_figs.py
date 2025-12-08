@@ -39,10 +39,9 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
 
         station_name = get_station_name(data_file)
 
+        plot_max_temp_png(station_data, station_name)
         max_mean_temp = calculate_mean_maximum_temperature(station_data)
         mean_max_temps.append({"location": station_name, "max_temp": max_mean_temp})
-
-        plot_max_temp_png(station_data, station_name)
 
     csv_file = WORK_DIR / "max_temps.csv"
     write_max_temps_csv_file(mean_max_temps, csv_file)

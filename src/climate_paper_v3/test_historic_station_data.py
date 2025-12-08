@@ -35,7 +35,7 @@ def test_met_office_historic_station_data(tmp_path):
     1964  11    3.0     4.7       3    45.5     ---
     1964  12    4.0     0.1      17    65.1     ---
     1965   1    5.0     0.8      14    74.6     ---
-    """).strip()
+    """).strip()  # noqa
     test_file.write_text(contents)
 
     # Act
