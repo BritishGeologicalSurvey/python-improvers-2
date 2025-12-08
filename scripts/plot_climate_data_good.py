@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 logger = logging.getLogger("climate_paper")
-WORK_DIR = Path(__file__).parent.parent.parent / "work"
-DATA_DIR = Path(__file__).parent.parent.parent / "data"
+DATA_DIR = Path(__file__).parent.parent / "data"
+RESULTS_DIR = Path(__file__).parent.parent / "results"
 
 # This message is used to demonstrate that code is run when module is imported.
 print(f"Hello from {__file__} body!")
@@ -43,7 +43,7 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
         max_mean_temp = calculate_mean_maximum_temperature(station_data)
         mean_max_temps.append({"location": station_name, "max_temp": max_mean_temp})
 
-    csv_file = WORK_DIR / "max_temps.csv"
+    csv_file = RESULTS_DIR / "max_temps.csv"
     write_max_temps_csv_file(mean_max_temps, csv_file)
 
 
@@ -99,7 +99,7 @@ def calculate_mean_maximum_temperature(station_data: pd.DataFrame) -> float:
     return mean_max_temp
 
 
-def plot_max_temp_png(station_data: pd.DataFrame, station_name: str, work_dir: Path = WORK_DIR):
+def plot_max_temp_png(station_data: pd.DataFrame, station_name: str, work_dir: Path = RESULTS_DIR):
     """
     Generate a .png file in the working directory with a plot of max temp.
     """
@@ -158,5 +158,5 @@ if __name__ == "__main__":
         format="%(name)s - %(levelname)s: %(message)s",
     )
 
-    WORK_DIR.mkdir(exist_ok=True)
-    plot_climate_paper_figs_and_csv(DATA_DIR, WORK_DIR)
+    RESULTS_DIR.mkdir(exist_ok=True)
+    plot_climate_paper_figs_and_csv(DATA_DIR, RESULTS_DIR)

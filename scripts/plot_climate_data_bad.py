@@ -1,11 +1,11 @@
 from io import StringIO
 import matplotlib.pyplot as plt
 import os
-data_Dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'data')
-work_Dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'work')
+data_Dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
+results_Dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'results')
 
 try:
-    os.mkdir(work_Dir)
+    os.mkdir(results_Dir)
 except FileExistsError:
     pass
 
@@ -55,13 +55,13 @@ def ProcessFile(filename):
     ax.set_title(filename.replace('data.txt', ''))
     ax.set_xlabel('Year')
     ax.set_ylabel('Temperature degC')
-    ax.get_figure().savefig(os.path.join(work_Dir, filename.replace('data.txt', '.png',
+    ax.get_figure().savefig(os.path.join(results_Dir, filename.replace('data.txt', '.png',
                                                         )), dpi=90)
     plt.close()
-f = open(os.path.join(work_Dir, 'max_temps.csv'), 'wt')
+f = open(os.path.join(results_Dir, 'max_temps.csv'), 'wt')
 f .write("location,max_temp\n")
 
-for filename in os.listdir(os.path.join(os.path.dirname(work_Dir), 'data')):
+for filename in os.listdir(os.path.join(os.path.dirname(results_Dir), 'data')):
     ProcessFile(filename)
 
 f.close()
