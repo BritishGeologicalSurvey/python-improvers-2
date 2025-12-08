@@ -43,7 +43,7 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
         mean_max_temps.append({"location": station_name, "max_temp": max_mean_temp})
 
         plot_max_temp_png(station_data, station_name)
-        
+
     csv_file = WORK_DIR / "max_temps.csv"
     write_max_temps_csv_file(mean_max_temps, csv_file)
 
@@ -56,7 +56,13 @@ def read_metoffice_file(data_file: Path) -> pd.DataFrame:
 
     # Define column names and missing value indicators
     column_names = ['year', 'month', 'tmax', 'tmin', 'frost_days', 'rain_mm', 'sun']
-    missing_values = {'tmax': '---', 'tmin': '---', 'frost_days': '---', 'rain_mm': '---', 'sun': '---'}
+    missing_values = {
+        'tmax': '---',
+        'tmin': '---',
+        'frost_days': '---',
+        'rain_mm': '---',
+        'sun': '---'
+    }
 
     # Read the cleaned lines, skipping the first lines of metadata
     # and the "provisional" data from the end of the file.
