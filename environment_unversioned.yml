@@ -1,0 +1,16 @@
+name: python-improvers-2
+channels:
+  - defaults
+dependencies:
+  - python=3.13
+  - pandas
+  - numpy
+  - matplotlib
+  - pytest
+  - spyder
+  - jupyter
+  - flake8
+  - pylint
+  - mypy
+  - pip:
+      - etlhelper==1.1.0

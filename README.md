@@ -4,6 +4,30 @@ Python Improvers course.  This is a new course based on lessons learned from the
 
 The aim is to teach how to write Python scripts in a modular, reusable fashion using readable Pythonic code.
 
+
+## Local setup instructions
+
+Ensure that the following software is installed on your machine:
+
++ `conda` or similar package manager (e.g. Anaconda/Miniconda)
++ VS Code
++ Git (optional)
+
+Download the project repository, either via `git clone` or with "Download ZIP" within the "Code" menu.
+
+Open a terminal window that has access to the `conda` command.
+On Windows, this may be by choosing the CMD.exe prompt from the Anaconda Navigator.
+
+Create the virtual environment.
+
+```bash
+conda env create -f environment.yml
+```
+
+If you are not on a Windows system, or have problems installing the packages, try using `environment_unversioned.yml` instead.
+This doesn't have pinned versions, which will allow the solver to choose appropriate versions for your system.
+
+
 ## IDEs
 
 This course is aimed at VS Code, but can also be done with a combination of Spyder and Jupyter.
@@ -32,13 +56,13 @@ To be able to execute code in the interactive terminal with `ctrl + enter`, do t
 + Search for "Jupyter execute selection"
 + Select the checkbox on "Jupyter > Interactive Window > Text Editor: Execute Selection".  This added `"jupyter.interactiveWindow.textEditor.executeSelection": true` to the settings.json.
 
-
 ### Linting
 
-The following linting tools are recommended.
+The following command-line linting tools are recommended.
+These are provided in the environment specification.
 
 ```python
-flake8 test.py
-pylint test.py
-mypy test.py  # Needs mypy --install-types to help
+flake8 test.py  # General code layout, redundant code and syntax errors
+pylint test.py  # Code style
+mypy test.py  # Static type checking
 ```
