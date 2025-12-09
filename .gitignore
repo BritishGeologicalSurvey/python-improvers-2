@@ -174,3 +174,6 @@ cython_debug/
 max_temps.csv
 *data.png
 work
+results
+.vscode
+.virtual_documents

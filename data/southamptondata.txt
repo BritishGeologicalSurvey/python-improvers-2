@@ -1,6 +1,5 @@
 Southampton
-Location 442000E 112500N, 20 metres amsl (1855 to 1969) 
-& 441600E 111200N, Lat 50.898 Lon -1.408, 3 metres amsl (1970 to 2000)
+Location 442000E 112500N, 20 metres amsl (1855 to 1969) & 441600E 111200N, Lat 50.898 Lon -1.408, 3 metres amsl (1970 to 2000)
 Estimated data is marked with a * after the value.
 Missing data (more than 2 days missing in month) is marked by  ---.
 Sunshine data taken from an automatic Kipp & Zonen sensor marked with a #, otherwise sunshine data taken from a Campbell Stokes recorder.

@@ -1,7 +1,6 @@
 """
 Classes that read and process historic climate station data.
 """
-import csv
 from io import StringIO
 import logging
 from pathlib import Path
@@ -43,7 +42,7 @@ class MetOfficeHistoricStationData:
         ax.set_xlabel('Year')
         ax.set_ylabel('Temperature degC')
         return fig
-    
+
     def __repr__(self) -> str:
         return f"MetOfficeHistoricStationData for {self.station_name}"
 
@@ -64,7 +63,13 @@ def read_metoffice_file(data_file: Path) -> pd.DataFrame:
 
     # Define column names and missing value indicators
     column_names = ['year', 'month', 'tmax', 'tmin', 'frost_days', 'rain_mm', 'sun']
-    missing_values = {'tmax': '---', 'tmin': '---', 'frost_days': '---', 'rain_mm': '---', 'sun': '---'}
+    missing_values = {
+        'tmax': '---',
+        'tmin': '---',
+        'frost_days': '---',
+        'rain_mm': '---',
+        'sun': '---'
+    }
 
     # Read the cleaned lines, skipping the first lines of metadata
     # and the "provisional" data from the end of the file.
