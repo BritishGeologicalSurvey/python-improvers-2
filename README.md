@@ -66,3 +66,16 @@ flake8 test.py  # General code layout, redundant code and syntax errors
 pylint test.py  # Code style
 mypy test.py  # Static type checking
 ```
+
+## Lessons
+
+The lessons are provided as IPython notebooks in the [lessons](lessons) folder.
+As well as the main lessons, topics that have been covered in Python clinics can also be included.
+Some of these are:
+
++ Dates and times with datetime
++ Text parsing and regular expressions
++ Testing code with pytest
++ Geopandas for spatial data analysis
++ Running external commands with subprocess
++ Interactive debugging with breakpoint and pdb
