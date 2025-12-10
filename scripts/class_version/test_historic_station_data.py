@@ -4,7 +4,7 @@ Tests for historic station data classes.
 from pathlib import Path
 from textwrap import dedent
 
-from historic_station_data import MetOfficeHistoricStationData
+from .historic_station_data import MetOfficeHistoricStationData
 
 
 def test_get_station_name():

@@ -149,6 +149,9 @@ def _preprocess_metoffice_file(data_file: Path) -> StringIO:
     return StringIO("".join(clean_lines))
 
 
+print(f"'__name__' is currently: '{__name__}'")
+
+
 if __name__ == "__main__":
     # This message is not displayed when module is imported.
     print(f"{__file__} is being run as a script!")
