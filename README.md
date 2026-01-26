@@ -41,7 +41,7 @@ The following VS Code extensions are recommended:
 + Data Wrangler (Microsoft)
 + Flake8 (Microsoft)
 + Black Formatter (Microsoft)
-+ RainbowCSV (Mechatroner)
++ Rainbow CSV (Mechatroner)
 + Vim (vscodevim) - only if you like Vim key bindings
 
 Using VS Code more like Spyder.
