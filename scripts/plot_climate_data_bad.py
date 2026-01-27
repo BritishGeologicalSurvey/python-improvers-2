@@ -14,7 +14,7 @@ if not os.path.exists(data_Dir):
 
 import csv
 
-def ProcessFile(filename):
+def ProcessFile(filename) -> str:
     print(filename)
     if filename.endswith('.txt') is False:
         # Ignore non-data files

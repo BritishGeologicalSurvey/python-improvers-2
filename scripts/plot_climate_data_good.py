@@ -26,7 +26,7 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
     a .csv file of mean maximum temperatures.  Output files are stored in
     work_dir.
     """
-    mean_max_temps = []  # store for mean max temp data
+    mean_max_temps: list[dict[str, str | float]] = []  # store for mean max temp data
 
     for data_file in data_dir.glob("*data.txt"):
         logger.info("Processing %s", data_file.name)
@@ -118,7 +118,7 @@ def plot_max_temp_figure(station_data: pd.DataFrame, station_name: str) -> Figur
 
 
 def write_max_temps_csv_file(
-    mean_max_temp_data: list[dict[str, float]], csv_file: Path
+    mean_max_temp_data: list[dict[str, str | float]], csv_file: Path
 ):
     """
     Use Python's inbuilt `csv` library to write data to csv file.
