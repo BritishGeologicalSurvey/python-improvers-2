@@ -32,13 +32,13 @@ def plot_climate_paper_figs_and_csv(data_dir: Path, work_dir: Path) -> None:
             logger.exception("Failed to read %s", data_file)
             continue
 
-        met_office_data.plot_max_temp_png(work_dir)
         mean_max_temps.append(
             {
                 "location": met_office_data.station_name,
                 "max_temp": met_office_data.mean_maximum_temperature(),
             }
         )
+        met_office_data.plot_max_temp_png(work_dir)
 
     csv_file = work_dir / "max_temps.csv"
     write_max_temps_csv_file(mean_max_temps, csv_file)

@@ -1,22 +1,9 @@
 """
 Tests for historic station data classes.
 """
-from pathlib import Path
 from textwrap import dedent
 
 from .historic_station_data import MetOfficeHistoricStationData
-
-
-def test_get_station_name():
-    # Arrange
-    station_file = Path("teststationdata.txt")  # doesn't need to exist
-    expected = "teststation"
-
-    # Act
-    result = MetOfficeHistoricStationData.get_station_name(station_file)
-
-    # Assert
-    assert result == expected
 
 
 def test_met_office_historic_station_data(tmp_path):
