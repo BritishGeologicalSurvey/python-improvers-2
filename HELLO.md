@@ -1,3 +1,3 @@
 # Hello, Everyone!
 
-Hi :)
+Good morning Pythonistas. It's Wednesday!
